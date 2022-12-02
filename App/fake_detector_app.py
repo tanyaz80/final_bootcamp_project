@@ -9,8 +9,7 @@ import pandas as pd
 import numpy as np
 import functions
 from PIL import Image
-#image = Image.open('fakenews.jpg')
-#st.image(image)
+
 
 lr_text = functions.load("../Models/lr.pickle")
 lr_title = functions.load("../Models/lr_title.pickle")
@@ -36,7 +35,7 @@ def news_prediction(text_string, is_news=True):
         if (pred_LR[0]==0)&(pred_PAC[0]==0)&(pred_RFC[0]==0):
             st.error('All models agree: it is a FAKE NEWS')
         elif (pred_LR[0]==1)&(pred_PAC[0]==1)&(pred_RFC[0]==1):
-            st.success('All models agree: it is a NOT A FAKE NEWS')
+            st.success('All models agree: it is NOT A FAKE NEWS')
         else: 
             st.text('Models came to different conclusions:')
             st.text('Logistic regression prediction is (0-fake,1-true):'+str(pred_LR[0]))
